@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/page/home_page.dart';
 import 'package:movie_app/provider/movie_provider.dart';
 import 'package:movie_app/services/client.dart';
+import 'package:movie_app/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -28,10 +29,7 @@ void main() async {
     ],
     child: MaterialApp(
       title: 'Lunni test',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: appTheme,
       home: const HomePage(),
       // HomePage(),
     ),

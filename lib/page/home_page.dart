@@ -86,6 +86,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(
           child: TextField(
+            style: Theme.of(context).textTheme.titleLarge,
             controller: _searchController,
             decoration: const InputDecoration(
               hintText: 'Search a movie by his title',
@@ -108,9 +109,12 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )
                 : Container(),
-            const Padding(
-              padding: EdgeInsets.only(left: 8),
-              child: Text('Past Searches'),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Text(
+                'Past Searches',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
             Expanded(
               child: Observer(

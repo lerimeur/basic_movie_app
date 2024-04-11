@@ -24,16 +24,14 @@ class MovieDetailPage extends StatelessWidget {
         child: Column(
           children: [
             Row(children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey.shade300,
-                ),
-                height: 300,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.network(activeMovieDetails.poster!,
-                      fit: BoxFit.contain),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: SizedBox(
+                  height: 300,
+                  child: Image.network(
+                    activeMovieDetails.poster!,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Expanded(
@@ -45,14 +43,17 @@ class MovieDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Title: ${activeMovieDetails.title}',
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         'Year: ${activeMovieDetails.year}',
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(width: 8),
                       Text(
                         'Runtime: ${activeMovieDetails.runtime}',
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Row(
                         children: [
@@ -70,6 +71,9 @@ class MovieDetailPage extends StatelessWidget {
                                       const SizedBox(width: 8),
                                       Text(
                                         '${e.value}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
                                         softWrap: true,
                                       ),
                                     ],
@@ -90,9 +94,13 @@ class MovieDetailPage extends StatelessWidget {
                   activeMovieDetails.plot!,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.arrow_drop_down_sharp),
+                  icon: const Icon(
+                    Icons.arrow_drop_down_sharp,
+                    color: Colors.white,
+                  ),
                   onPressed: () {
                     showDialog(
                       context: context,
@@ -104,13 +112,19 @@ class MovieDetailPage extends StatelessWidget {
                 )
               ],
             ),
-            Text(
-              'Director: ${activeMovieDetails.director}',
-            ),
-            Text('Genre: ${activeMovieDetails.genre}'),
-            Column(children: [
-              const Text("Main actors"),
-              Text(activeMovieDetails.actors!),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                'Director: ${activeMovieDetails.director}',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                'Genre: ${activeMovieDetails.genre}',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                "Main actors: ${activeMovieDetails.actors}",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ])
             // Text('Main actors: ${activeMovieDetails.actors}'),
           ],
