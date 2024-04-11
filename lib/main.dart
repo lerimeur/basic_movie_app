@@ -22,7 +22,7 @@ void main() async {
       Provider<Client>(
         create: (_) => Client(
           baseUrl: baseUrl,
-          apiKey: apikey, // Remplacez par votre clé API réelle
+          apiKey: apikey,
         ),
       ),
     ],

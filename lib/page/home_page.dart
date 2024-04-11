@@ -86,12 +86,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(
           child: TextField(
-              controller: _searchController,
-              decoration: const InputDecoration(
-                hintText: 'Search a movie by his title',
-              ),
-              // GOTO details page
-              onSubmitted: (_) => getMovieDetails(provider, context)),
+            controller: _searchController,
+            decoration: const InputDecoration(
+              hintText: 'Search a movie by his title',
+            ),
+            onSubmitted: (_) => getMovieDetails(provider, context),
+          ),
         ),
       ),
       body: SafeArea(
@@ -101,8 +101,9 @@ class _HomePageState extends State<HomePage> {
             _suggestedMovie.isNotEmpty
                 ? Column(
                     children: [
-                      ..._suggestedMovie
-                          .map((ApiModel item) => MovieTiles(apiModel: item)),
+                      ..._suggestedMovie.map(
+                        (ApiModel item) => MovieTiles(apiModel: item),
+                      ),
                       const Divider(),
                     ],
                   )
@@ -114,9 +115,11 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Observer(
                 builder: (_) => ListView.builder(
-                    itemCount: provider.movieList.length,
-                    itemBuilder: (_, index) =>
-                        MovieTiles(apiModel: provider.movieList[index])),
+                  itemCount: provider.movieList.length,
+                  itemBuilder: (_, index) => MovieTiles(
+                    apiModel: provider.movieList[index],
+                  ),
+                ),
               ),
             )
           ],
